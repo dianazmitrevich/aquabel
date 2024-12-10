@@ -1,0 +1,129 @@
+$font: "Gilroy";
+$color-white: #fff;
+$color-dark: #333;
+$color-bg: #222429;
+$color-bg-lighter: #2d3035;
+$transition: all 0.24s ease-in-out;
+
+@font-face {
+    font-family: "Gilroy";
+    src: url("../font/Gilroy-Regular.ttf");
+}
+
+@mixin mobile {
+    @media (max-width: 575px) {
+        @content;
+    }
+}
+
+@mixin sm-tablet {
+    @media (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin l-tablet {
+    @media (max-width: 991px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (max-width: 1219px) {
+        @content;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background: #222429;
+}
+
+body {
+    font-size: 16px;
+    font-family: $font;
+    color: $color-dark;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+.container {
+    width: 100%;
+    padding: 0 30px;
+    margin: 0 auto;
+}
+
+.d-wrap {
+    min-width: 350px;
+    margin: 0 auto;
+}
+
+.outer-bg {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.img-cage {
+    width: 100%;
+    height: 100%;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+.stop-scroll {
+    overflow: hidden;
+}
+
+@media (min-width: 576px) {
+    .container {
+        // max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        // max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        // max-width: 960px;
+    }
+}
+
+@media (min-width: 1220px) {
+    .container {
+        // max-width: 1240px;
+    }
+}
+
+@media (max-width: 650px) {
+    .container {
+        padding: 0 15px;
+    }
+}
+
+@import "scss/index/banner";
+@import "scss/header";
+@import "scss/popups";
+@import "scss/footer";
+@import "scss/custom";
