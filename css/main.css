@@ -407,6 +407,7 @@ a {
 .popups .popup-menu .menu__row {
   display: flex;
   gap: 50px;
+  max-width: 1200px;
 }
 .popups .popup-menu .menu__col {
   width: 50%;
