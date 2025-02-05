@@ -1,0 +1,110 @@
+.object-info {
+    .info__wrapper {
+        padding-top: 50px;
+        padding-bottom: 30px;
+        border-bottom: 1px solid rgba($color: #a0a0a0, $alpha: 0.18);
+        margin-bottom: 70px;
+        display: flex;
+        gap: 40px;
+        justify-content: space-between;
+
+        @include sm-tablet {
+            padding-top: 31px;
+            margin-bottom: 30px;
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+
+    .info__col {
+        @include sm-tablet {
+            width: 100%;
+        }
+
+        &.left {
+            max-width: calc(100% - 402px - 40px);
+
+            @include desktop {
+                max-width: 572px;
+            }
+
+            @include sm-tablet {
+                max-width: 100%;
+            }
+        }
+
+        &.right {
+            @include desktop {
+                min-width: 300px;
+            }
+        }
+    }
+
+    .info__title {
+        margin-bottom: 21px;
+    }
+
+    .info__text {
+        font-size: 13px;
+    }
+}
+
+.info-items {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    max-width: fit-content;
+
+    @include sm-tablet {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .upper {
+        display: flex;
+        gap: 10px;
+
+        @include desktop {
+            flex-wrap: wrap;
+        }
+
+        @include sm-tablet {
+            flex-wrap: wrap;
+        }
+    }
+
+    .lower {
+        width: 100%;
+    }
+
+    .item {
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .text {
+            font-size: 13px;
+            line-height: 13px;
+            white-space: nowrap;
+        }
+
+        &.wide {
+            width: 100%;
+
+            .tetx {
+                white-space: unset;
+            }
+        }
+    }
+}

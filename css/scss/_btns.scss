@@ -1,0 +1,110 @@
+.main-btn {
+    display: block;
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+    cursor: pointer;
+    width: fit-content;
+    transition: $transition;
+
+    &.filled {
+        background: #fff;
+    }
+
+    &.dark {
+        background: #2a2d34;
+
+        .btn-wrap {
+            .text {
+                color: #fff;
+            }
+
+            .icon {
+                background: #fff;
+
+                path {
+                    fill: #2a2d34;
+                }
+            }
+        }
+    }
+
+    .btn-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+        min-height: 48px;
+
+        .text {
+            font-size: 13px;
+            text-align: center;
+            flex-grow: 1;
+            padding: 9px 15px;
+            color: #2a2d34;
+            transition: $transition;
+
+            path {
+                transition: $transition;
+            }
+        }
+
+        .icon {
+            background: #2a2d34;
+            height: 46px;
+            width: 46px;
+            min-width: 46px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1px;
+            margin-left: 1px;
+            transition: $transition;
+
+            path {
+                transition: $transition;
+            }
+        }
+    }
+
+    &:hover {
+        background: #2a2d34 !important;
+        border-color: #2a2d34 !important;
+
+        &.dark {
+            background: #fff !important;
+            border-color: #2a2d34 !important;
+
+            .btn-wrap {
+                .text {
+                    color: #333;
+
+                    path {
+                        fill: #333;
+                    }
+                }
+
+                .icon {
+                    background: #333;
+
+                    path {
+                        fill: #fff;
+                    }
+                }
+            }
+        }
+
+        .btn-wrap {
+            .text {
+                color: #fff;
+            }
+
+            .icon {
+                background: #fff;
+
+                path {
+                    fill: #2a2d34;
+                }
+            }
+        }
+    }
+}

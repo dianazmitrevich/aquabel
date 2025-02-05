@@ -46,6 +46,7 @@
     width: fit-content;
     min-width: 200px;
     min-height: 52.68px;
+    position: relative;
 }
 
 .header__menu {
@@ -107,6 +108,7 @@
     height: 16px;
     width: 16px;
     cursor: pointer;
+    position: relative;
 }
 
 .header__lang {
@@ -119,8 +121,7 @@
         cursor: pointer;
 
         &.selected {
-            -webkit-text-stroke: 0.8px $color-white;
-            text-stroke: 0.8px $color-white;
+            font-weight: 600;
         }
     }
 }

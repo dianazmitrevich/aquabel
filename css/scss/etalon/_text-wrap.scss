@@ -1,0 +1,117 @@
+.text-wrap {
+    overflow: hidden;
+
+    p {
+        font-size: 13px;
+    }
+
+    a {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        transition: $transition;
+        cursor: pointer;
+
+        &:hover {
+            color: #929292;
+        }
+    }
+
+    strong {
+        font-weight: 600;
+    }
+
+    span.line-through {
+        text-decoration: line-through;
+    }
+
+    ol {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        counter-reset: li;
+        margin-bottom: 20px;
+
+        li {
+            font-size: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 6px;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+
+            &:has(ol) {
+                ol {
+                    width: 100%;
+                    margin-left: 16px;
+                    margin-top: 4px;
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        li:before {
+            counter-increment: li;
+            content: counters(li, ".") ". ";
+            min-width: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+    }
+
+    .d-accordion {
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba($color: #a0a0a0, $alpha: 0.18);
+    }
+
+    .accordion-head {
+        width: 100%;
+        justify-content: space-between;
+
+        .text {
+            padding-right: 40px;
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+
+        .arrow {
+            width: 7.5px;
+            height: 100%;
+
+            &:before {
+                background-image: url(../images/icon-arrow-accordion-dark.svg);
+                width: 7.5px;
+                height: 5px;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 0;
+            }
+        }
+    }
+
+    .accordion-body {
+        p {
+            margin-top: 15px;
+
+            &:first-of-type {
+                margin-top: 20px;
+            }
+        }
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    .p-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+}

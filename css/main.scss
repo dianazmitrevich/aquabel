@@ -8,28 +8,35 @@ $transition: all 0.24s ease-in-out;
 @font-face {
     font-family: "Gilroy";
     src: url("../font/Gilroy-Regular.ttf");
+    font-weight: 400;
 }
 
-@mixin mobile {
-    @media (max-width: 575px) {
-        @content;
-    }
+@font-face {
+    font-family: "Gilroy";
+    src: url("../font/Gilroy-Semibold.ttf");
+    font-weight: 500;
 }
+
+// @mixin mobile {
+//     @media (max-width: 575px) {
+//         @content;
+//     }
+// }
 
 @mixin sm-tablet {
-    @media (max-width: 767px) {
+    @media (max-width: 650px) {
         @content;
     }
 }
 
 @mixin l-tablet {
-    @media (max-width: 991px) {
+    @media (max-width: 900px) {
         @content;
     }
 }
 
 @mixin desktop {
-    @media (max-width: 1219px) {
+    @media (max-width: 1020px) {
         @content;
     }
 }
@@ -64,11 +71,17 @@ a {
     width: 100%;
     padding: 0 30px;
     margin: 0 auto;
+    position: relative;
 }
 
 .d-wrap {
-    min-width: 350px;
+    min-width: 375px;
     margin: 0 auto;
+}
+
+.d-main {
+    min-height: calc(100vh - 39px);
+    position: relative;
 }
 
 .outer-bg {
@@ -122,8 +135,26 @@ a {
     }
 }
 
-@import "scss/index/banner";
+@import "scss/index/big-banner";
+@import "scss/object-card/object-info";
+@import "scss/object-card/premises-cards";
+@import "scss/object-card/wide-map";
+@import "scss/object-card/other-objects";
+@import "scss/object-card/feedback-form";
+@import "scss/about/about-block";
+@import "scss/etalon/text-wrap";
+@import "scss/contacts/contacts-info";
+@import "scss/press/press-text";
+@import "scss/press/body-cards";
+@import "scss/press/logotypes-cards";
 @import "scss/header";
 @import "scss/popups";
 @import "scss/footer";
-@import "scss/custom";
+@import "scss/custom-elements";
+@import "scss/inner-page";
+@import "scss/breadcrumbs";
+@import "scss/big-breadcrumbs";
+@import "scss/titles";
+@import "scss/btns";
+@import "scss/margins";
+@import "scss/page404";

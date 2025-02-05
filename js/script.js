@@ -1,56 +1,66 @@
-let bodyElement = document.querySelector("body");
-let headerMenu = document.querySelector(".header__menu");
+const bodyElement = document.querySelector("body");
+const headerMenu = document.querySelector(".header__menu");
 
-if (headerMenu) {
-    headerMenu.addEventListener("click", () => {
-        headerMenu.classList.toggle("opened");
+// скрипт для попапа меню в шапке
+document.addEventListener("DOMContentLoaded", () => {
+    if (headerMenu) {
+        headerMenu.addEventListener("click", () => {
+            headerMenu.classList.toggle("opened");
 
-        headerMenu.querySelector(".text").innerHTML = headerMenu.classList.contains("opened") ? "Закрыть" : "Меню";
+            headerMenu.querySelector(".text").innerHTML = headerMenu.classList.contains("opened") ? "Закрыть" : "Меню";
 
-        let menuPopup = document.querySelector(".popups .popup-menu");
-
-        if (menuPopup) {
-            if (!menuPopup.classList.contains("show")) {
-                checkOpenedPopups("popup-menu");
-            }
-
-            menuPopup.classList.toggle("show");
-            bodyElement.classList.toggle("stop-scroll");
-        }
-    });
-}
-
-let headerSearches = document.querySelectorAll(".header__search");
-let searchPopupClose = document.querySelector(".popup-search .search__close");
-
-if (headerSearches && searchPopupClose) {
-    [...headerSearches, searchPopupClose].forEach((headerSearch) => {
-        headerSearch.addEventListener("click", () => {
-            let menuPopup = document.querySelector(".popups .popup-search");
+            let menuPopup = document.querySelector(".popups .popup-menu");
 
             if (menuPopup) {
                 if (!menuPopup.classList.contains("show")) {
-                    checkOpenedPopups("popup-search");
+                    checkOpenedPopups("popup-menu");
                 }
 
                 menuPopup.classList.toggle("show");
                 bodyElement.classList.toggle("stop-scroll");
             }
         });
-    });
-}
+    }
+});
+
+// скрипт для попапа поиска в шапке
 document.addEventListener("DOMContentLoaded", () => {
-    const accordions = document.querySelectorAll(".accordion");
+    let headerSearches = document.querySelectorAll(".header__search");
+    let searchPopupClose = document.querySelector(".popup-search .search__close");
+
+    if (headerSearches && searchPopupClose) {
+        [...headerSearches, searchPopupClose].forEach((headerSearch) => {
+            headerSearch.addEventListener("click", () => {
+                let menuPopup = document.querySelector(".popups .popup-search");
+
+                if (menuPopup) {
+                    if (!menuPopup.classList.contains("show")) {
+                        checkOpenedPopups("popup-search");
+                    }
+
+                    menuPopup.classList.toggle("show");
+                    bodyElement.classList.toggle("stop-scroll");
+                }
+            });
+        });
+    }
+});
+
+// скрипт для аккордиона
+document.addEventListener("DOMContentLoaded", () => {
+    const accordions = document.querySelectorAll(".d-accordion");
 
     accordions.forEach((accordion) => {
         const head = accordion.querySelector(".accordion-head");
+        const arrow = head.querySelector(".arrow");
+        let isHovered = false;
 
         head.addEventListener("click", () => {
             const accordionBody = accordion.querySelector(".accordion-body");
             const dataAccordion = accordion.getAttribute("data-accordion");
 
             if (dataAccordion) {
-                const groupAccordions = document.querySelectorAll(`.accordion[data-accordion="${dataAccordion}"]`);
+                const groupAccordions = document.querySelectorAll(`.d-accordion[data-accordion="${dataAccordion}"]`);
                 groupAccordions.forEach((groupAccordion) => {
                     const groupBody = groupAccordion.querySelector(".accordion-body");
                     if (groupAccordion !== accordion) {
@@ -68,34 +78,90 @@ document.addEventListener("DOMContentLoaded", () => {
                 accordionBody.style.maxHeight = accordionBody.scrollHeight + "px";
             }
         });
+
+        if (!arrow) {
+            head.addEventListener("mouseenter", () => {
+                const accordionBody = accordion.querySelector(".accordion-body");
+                const dataAccordion = accordion.getAttribute("data-accordion");
+
+                if (dataAccordion) {
+                    const groupAccordions = document.querySelectorAll(
+                        `.d-accordion[data-accordion="${dataAccordion}"]`
+                    );
+                    groupAccordions.forEach((groupAccordion) => {
+                        const groupBody = groupAccordion.querySelector(".accordion-body");
+                        if (groupAccordion !== accordion) {
+                            groupAccordion.classList.remove("active");
+                            groupBody.style.maxHeight = null;
+                        }
+                    });
+                }
+
+                if (!isHovered) {
+                    accordion.classList.add("active");
+                    accordionBody.style.maxHeight = accordionBody.scrollHeight + "px";
+                    isHovered = true;
+                }
+            });
+
+            head.addEventListener("mouseleave", () => {});
+        }
+
+        if (!arrow) {
+            const dataAccordion = accordion.getAttribute("data-accordion");
+
+            if (dataAccordion) {
+                const groupAccordions = document.querySelectorAll(`.d-accordion[data-accordion="${dataAccordion}"]`);
+                groupAccordions.forEach((groupAccordion) => {
+                    groupAccordion.addEventListener("mouseenter", () => {
+                        if (accordion !== groupAccordion && isHovered) {
+                            const accordionBody = accordion.querySelector(".accordion-body");
+                            accordion.classList.remove("active");
+                            accordionBody.style.maxHeight = null;
+                            isHovered = false;
+
+                            const newAccordionBody = groupAccordion.querySelector(".accordion-body");
+                            groupAccordion.classList.add("active");
+                            newAccordionBody.style.maxHeight = newAccordionBody.scrollHeight + "px";
+                            isHovered = true;
+                        }
+                    });
+                });
+            }
+        }
     });
 });
 
-let menuListItems = document.querySelectorAll(".popup-menu .menu__list .list-item");
+// скрипт для пунктов меню в шапке
+document.addEventListener("DOMContentLoaded", () => {
+    let menuListItems = document.querySelectorAll(".popup-menu .menu__list .list-item");
+    if (menuListItems) {
+        menuListItems.forEach((menuListItem) => {
+            menuListItem.addEventListener("mouseover", () => {
+                menuListItems.forEach((element) => {
+                    element.classList.remove("active");
+                });
 
-if (menuListItems) {
-    menuListItems.forEach((menuListItem) => {
-        menuListItem.addEventListener("mouseover", () => {
-            menuListItems.forEach((element) => {
-                element.classList.remove("active");
+                menuListItem.classList.add("active");
+                let hasChildren = menuListItem.hasAttribute("data-item");
+
+                document.querySelectorAll(`.popup-menu .menu__items`).forEach((element) => {
+                    element.classList.remove("active");
+                });
+
+                if (hasChildren) {
+                    let menuItems = document
+                        .querySelector(
+                            `.popup-menu .menu__items[data-item='${menuListItem.getAttribute("data-item")}']`
+                        )
+                        .classList.add("active");
+                }
             });
-
-            menuListItem.classList.add("active");
-            let hasChildren = menuListItem.hasAttribute("data-item");
-
-            document.querySelectorAll(`.popup-menu .menu__items`).forEach((element) => {
-                element.classList.remove("active");
-            });
-
-            if (hasChildren) {
-                let menuItems = document
-                    .querySelector(`.popup-menu .menu__items[data-item='${menuListItem.getAttribute("data-item")}']`)
-                    .classList.add("active");
-            }
         });
-    });
-}
+    }
+});
 
+// скрипт для пунктов меню в шапке на мобилке
 document.addEventListener("DOMContentLoaded", function () {
     const menuItems = document.querySelectorAll(".menu__items");
     const rightColumn = document.querySelector(".menu__col.right");
@@ -124,8 +190,9 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("resize", moveMenuItems);
 });
 
+// скрипт для селекта в поиске в шапке
 document.addEventListener("DOMContentLoaded", () => {
-    const selects = document.querySelectorAll(".select-custom");
+    const selects = document.querySelectorAll(".d-select");
 
     const formatSquareMeters = (text) => {
         return text.replace(/м2/g, `<span class="lighter">м<span class="upper-num">2</span></span>`);
@@ -207,6 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// функция для закрытия попапов (меню и поиск в шапке)
 function checkOpenedPopups(exceptFor) {
     let popups = document.querySelectorAll(".popups .popup-item");
 
@@ -230,3 +298,120 @@ function checkOpenedPopups(exceptFor) {
         bodyElement.classList.remove("stop-scroll");
     }
 }
+
+// слайдер с другими объектами на карточке объекта
+document.addEventListener("DOMContentLoaded", () => {
+    if ($(".other-objects")) {
+        $(".other-objects .objects__slider").slick({
+            arrows: false,
+            variableWidth: true,
+        });
+    }
+});
+
+// общий скрипт для попапов
+document.addEventListener("DOMContentLoaded", () => {
+    let popuped = document.querySelectorAll(".popuped");
+
+    popuped.forEach((elementToClick) => {
+        elementToClick.addEventListener("click", () => {
+            let targetPopup = elementToClick.getAttribute("data-popup");
+
+            document.querySelector("." + targetPopup).classList.toggle("show");
+
+            const hasShowClass = Array.from(document.querySelectorAll(".popup-item")).some((element) =>
+                element.classList.contains("show")
+            );
+
+            if (hasShowClass) {
+                bodyElement.classList.add("stop-scroll");
+            } else {
+                bodyElement.classList.remove("stop-scroll");
+            }
+        });
+    });
+});
+
+// скрипт для показа карточек в аккордионе по клику на "Показать больше"
+document.addEventListener("DOMContentLoaded", () => {
+    let showMore = document.querySelectorAll(".d-accordion .cards__more");
+
+    showMore.forEach((element) => {
+        element.addEventListener("click", () => {
+            let items = element.closest(".body-cards");
+
+            items.classList.toggle("show-all");
+        });
+    });
+});
+
+// скрипт для слайдеров изображений
+document.addEventListener("DOMContentLoaded", () => {
+    $(".popup-images .slider-for .items").slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: ".popup-images .slider-nav",
+        draggable: false,
+    });
+
+    $(".popup-images .slider-nav").slick({
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        asNavFor: ".popup-images .slider-for .items",
+        arrows: false,
+        dots: false,
+        focusOnSelect: true,
+        variableWidth: true,
+    });
+});
+
+// скрипт для изменения высоты адреса в блоке с карточками помещений на мобильной версии
+document.addEventListener("DOMContentLoaded", function () {
+    function setMaxAddressHeight() {
+        const container = document.querySelector(".cards__items");
+        const rows = Array.from(container.children);
+
+        let currentRow = [];
+        let lastOffsetTop = -1;
+        let rowsWithAddresses = [];
+
+        rows.forEach((row) => {
+            if (row.offsetTop === lastOffsetTop || lastOffsetTop === -1) {
+                currentRow.push(row);
+            } else {
+                rowsWithAddresses.push(currentRow);
+                currentRow = [row];
+            }
+            lastOffsetTop = row.offsetTop;
+        });
+
+        if (currentRow.length > 0) {
+            rowsWithAddresses.push(currentRow);
+        }
+
+        rowsWithAddresses.forEach((row) => {
+            let maxHeight = 0;
+
+            row.forEach((card) => {
+                const address = card.querySelector(".info-lower .item__address");
+                if (address) {
+                    maxHeight = Math.max(maxHeight, address.offsetHeight);
+                }
+            });
+
+            maxHeight = Math.max(maxHeight, 42);
+
+            row.forEach((card) => {
+                const address = card.querySelector(".info-lower .item__address");
+                if (address) {
+                    address.style.minHeight = `${maxHeight}px`;
+                }
+            });
+        });
+    }
+
+    setMaxAddressHeight();
+    window.addEventListener("resize", setMaxAddressHeight);
+});

@@ -1,0 +1,135 @@
+.logotypes-cards {
+    .cards__wrapper {
+        margin-bottom: 70px;
+    }
+
+    .cards__items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px 10px;
+
+        @include sm-tablet {
+            gap: 15px;
+        }
+
+        .item {
+            width: calc((100% - 10px * 3) / 4);
+            cursor: pointer;
+
+            @include desktop {
+                width: calc((100% - 10px * 2) / 3);
+            }
+
+            @include l-tablet {
+                width: calc((100% - 10px) / 2);
+            }
+
+            @include sm-tablet {
+                width: 100%;
+            }
+
+            &:hover {
+                .item__img .tag {
+                    background: #569fa6;
+                    color: #fff;
+
+                    path {
+                        fill: #fff;
+                    }
+                }
+
+                .item__name {
+                    color: #569fa6;
+                }
+            }
+
+            .wrap {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        .item__img {
+            background: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 338/198;
+            position: relative;
+
+            img {
+                width: 70%;
+                height: auto;
+            }
+
+            .tag {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                background: #efefef;
+                border-radius: 5px;
+                padding: 6px 10px;
+                transition: $transition;
+
+                path {
+                    transition: $transition;
+                }
+            }
+        }
+
+        .item__format {
+            padding: 5px 20px 0;
+            color: #727272;
+            font-size: 13px;
+
+            @include sm-tablet {
+                padding-top: 0;
+            }
+        }
+
+        .item__name {
+            color: #2a2d34;
+            font-weight: 600;
+            padding: 0 20px;
+            transition: $transition;
+        }
+    }
+
+    .cards__brandbook {
+        margin-top: 40px;
+        background: #fff;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        padding: 22.5px 41px;
+        width: 100%;
+        justify-content: space-between;
+
+        @include sm-tablet {
+            padding: 34px 41px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 30px;
+        }
+
+        .main-btn {
+            width: 202px;
+
+            .text {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+            }
+        }
+    }
+}

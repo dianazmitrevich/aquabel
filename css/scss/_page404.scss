@@ -1,0 +1,37 @@
+.page404__wrapper {
+    margin-top: 94px;
+    margin-bottom: 192px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include sm-tablet {
+        margin-bottom: 211px;
+    }
+}
+
+.page404__num {
+    font-size: 267px;
+
+    @include sm-tablet {
+        font-size: 180px;
+    }
+}
+
+.page404__text {
+    max-width: 458px;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 40px;
+
+    @include sm-tablet {
+        margin-bottom: 30px;
+    }
+}
+
+.page404__btn {
+    .main-btn {
+        border: none;
+        background: #fff;
+    }
+}

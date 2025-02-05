@@ -1,0 +1,38 @@
+.press-text {
+    p {
+        font-size: 13px;
+        margin-bottom: 67px;
+    }
+
+    .h2 {
+        text-align: center;
+    }
+}
+
+.press-info {
+    margin-top: 30px;
+
+    .info__wrapper {
+        margin-bottom: 67px;
+        max-width: unset;
+        gap: 99px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 900px) {
+    .press-info {
+        .info__wrapper {
+            flex-direction: row;
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    .press-info {
+        .info__wrapper {
+            flex-direction: column;
+            gap: 30px;
+        }
+    }
+}

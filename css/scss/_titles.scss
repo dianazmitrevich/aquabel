@@ -1,0 +1,37 @@
+h2,
+h3 {
+    font-weight: 400;
+}
+
+h4,
+h5 {
+    font-weight: 600;
+}
+
+.h2 {
+    font-size: 32px;
+    text-transform: uppercase;
+    font-weight: 400;
+
+    @include sm-tablet {
+        font-size: 28px;
+    }
+
+    &.smaller {
+        font-size: 22px;
+    }
+}
+
+.h3 {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.h4 {
+    font-size: 20px;
+}
+
+.h5 {
+    font-size: 15px;
+}
