@@ -428,55 +428,58 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // скрипт для маска в инпуте типа телефон
 document.addEventListener("DOMContentLoaded", function () {
-    const input = document.querySelector("input[type='tel']");
-    const placeholder = input.getAttribute("placeholder").replace(/[^\d_+() -]/g, "");
-    const staticDigits = placeholder.replace(/[^\d]/g, "");
+    const telInputs = document.querySelectorAll("input[type='tel']");
 
-    input.addEventListener("focus", function () {
-        if (!input.value) input.value = placeholder;
-    });
+    telInputs.forEach((input) => {
+        const placeholder = input.getAttribute("placeholder").replace(/[^\d_+() -]/g, "");
+        const staticDigits = placeholder.replace(/[^\d]/g, "");
 
-    input.addEventListener("input", function (e) {
-        let rawInput = input.value.replace(/[^\d]/g, "");
-        let userInput = rawInput.replace(new RegExp("^" + staticDigits), "");
-        let formatted = "";
-        let numIndex = 0;
+        input.addEventListener("focus", function () {
+            if (!input.value) input.value = placeholder;
+        });
 
-        for (let i = 0; i < placeholder.length; i++) {
-            if (placeholder[i] === "_") {
-                formatted += numIndex < userInput.length ? userInput[numIndex] : "_";
-                if (numIndex < userInput.length) numIndex++;
-            } else {
-                formatted += placeholder[i];
-            }
-        }
+        input.addEventListener("input", function (e) {
+            let rawInput = input.value.replace(/[^\d]/g, "");
+            let userInput = rawInput.replace(new RegExp("^" + staticDigits), "");
+            let formatted = "";
+            let numIndex = 0;
 
-        input.value = formatted;
-
-        if (!userInput.length) input.value = "";
-    });
-
-    input.addEventListener("keydown", function (e) {
-        if (e.key === "Backspace" || e.key === "Delete") {
-            let cursorPos = input.selectionStart;
-            let value = input.value.split("");
-
-            while (cursorPos > 0) {
-                cursorPos--;
-                if (placeholder[cursorPos] === "_") {
-                    value[cursorPos] = "_";
-                    input.value = value.join("");
-                    input.setSelectionRange(cursorPos, cursorPos);
-                    e.preventDefault();
-                    break;
+            for (let i = 0; i < placeholder.length; i++) {
+                if (placeholder[i] === "_") {
+                    formatted += numIndex < userInput.length ? userInput[numIndex] : "_";
+                    if (numIndex < userInput.length) numIndex++;
+                } else {
+                    formatted += placeholder[i];
                 }
             }
-        }
-    });
 
-    input.addEventListener("blur", function () {
-        let hasDigits = /\d/.test(input.value);
-        if (!hasDigits) input.value = "";
+            input.value = formatted;
+
+            if (!userInput.length) input.value = "";
+        });
+
+        input.addEventListener("keydown", function (e) {
+            if (e.key === "Backspace" || e.key === "Delete") {
+                let cursorPos = input.selectionStart;
+                let value = input.value.split("");
+
+                while (cursorPos > 0) {
+                    cursorPos--;
+                    if (placeholder[cursorPos] === "_") {
+                        value[cursorPos] = "_";
+                        input.value = value.join("");
+                        input.setSelectionRange(cursorPos, cursorPos);
+                        e.preventDefault();
+                        break;
+                    }
+                }
+            }
+        });
+
+        input.addEventListener("blur", function () {
+            let hasDigits = /\d/.test(input.value);
+            if (!hasDigits) input.value = "";
+        });
     });
 });
 
