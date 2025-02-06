@@ -37,6 +37,13 @@
             aspect-ratio: 562/450;
             display: block;
             margin-right: 10px;
+            cursor: pointer;
+
+            &:hover {
+                .item__bg:after {
+                    opacity: 0.47;
+                }
+            }
 
             .item-wrap {
                 position: relative;
@@ -63,6 +70,7 @@
                         rgba(2, 17, 53, 1) 100%
                     );
                     opacity: 0.67;
+                    transition: $transition;
                 }
 
                 img {
@@ -87,6 +95,11 @@
                 color: #fff;
                 width: 100%;
                 padding: 0 20px;
+                transition: $transition;
+
+                &:hover {
+                    color: #dcdcdc;
+                }
 
                 .title {
                     @include sm-tablet {

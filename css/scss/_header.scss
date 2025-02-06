@@ -1,10 +1,130 @@
 .header {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     color: $color-white;
     z-index: 999999;
+    transition: top 0.24s ease-in-out;
+
+    &.header-scroll {
+        position: fixed;
+        top: 0;
+
+        .header__wrapper {
+            background: #fff;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 34.2px 0 rgba($color: #000, $alpha: 0.1);
+            margin: 15px;
+            width: calc(100% - 30px);
+            transition: background 0.24s ease-in-out;
+        }
+    }
+}
+
+body:has(.index-page) {
+    .header-scroll {
+        color: #333333;
+
+        .header__logo {
+            img {
+                display: none;
+            }
+
+            &:before {
+                content: "";
+                background-image: url(../images/logo-dark.png);
+                width: 100%;
+                height: 100%;
+                background-repeat: no-repeat;
+                top: 0;
+                left: 0;
+                position: absolute;
+                background-size: contain;
+            }
+        }
+
+        .header__search {
+            img {
+                display: none;
+            }
+
+            &:before {
+                content: "";
+                background-image: url(../images/icon-search-dark.svg);
+                width: 100%;
+                height: 100%;
+                background-repeat: no-repeat;
+                top: 0;
+                left: 0;
+                position: absolute;
+                background-size: contain;
+            }
+        }
+
+        .header__menu {
+            .line {
+                background: #333;
+            }
+        }
+    }
+
+    &:has(.popup-menu.show),
+    &:has(.popup-search.show) {
+        .header-scroll {
+            color: #fff;
+
+            .header__logo {
+                img {
+                    display: none;
+                }
+
+                &:before {
+                    content: "";
+                    background-image: url(../images/logo.png);
+                    width: 100%;
+                    height: 100%;
+                    background-repeat: no-repeat;
+                    top: 0;
+                    left: 0;
+                    position: absolute;
+                    background-size: contain;
+                }
+            }
+
+            .header__search {
+                img {
+                    display: none;
+                }
+
+                &:before {
+                    content: "";
+                    background-image: url(../images/icon-search.svg);
+                    width: 100%;
+                    height: 100%;
+                    background-repeat: no-repeat;
+                    top: 0;
+                    left: 0;
+                    position: absolute;
+                    background-size: contain;
+                }
+            }
+
+            .header__menu {
+                .line {
+                    background: #fff;
+                }
+            }
+        }
+
+        .header__wrapper {
+            background: transparent;
+        }
+    }
 }
 
 .header__wrapper {

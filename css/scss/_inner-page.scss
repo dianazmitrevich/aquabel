@@ -57,6 +57,10 @@ html:has(.inner-page) {
             color: #fff;
         }
 
+        .header__wrapper {
+            background: transparent;
+        }
+
         .header__logo {
             img {
                 display: block;

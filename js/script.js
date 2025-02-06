@@ -307,6 +307,15 @@ document.addEventListener("DOMContentLoaded", () => {
             variableWidth: true,
         });
     }
+
+    if ($(".popup-object-card")) {
+        $(".popup-object-card .screen-slider").slick({
+            prevArrow: $("#screen-slide-prev"),
+            nextArrow: $("#screen-slide-next"),
+            slidesToShow: 1,
+            slidesToScroll: 1,
+        });
+    }
 });
 
 // общий скрипт для попапов
@@ -350,7 +359,8 @@ document.addEventListener("DOMContentLoaded", () => {
     $(".popup-images .slider-for .items").slick({
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: false,
+        prevArrow: $("#popup-images-slide-prev"),
+        nextArrow: $("#popup-images-slide-next"),
         fade: true,
         asNavFor: ".popup-images .slider-nav",
         draggable: false,
@@ -414,4 +424,69 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setMaxAddressHeight();
     window.addEventListener("resize", setMaxAddressHeight);
+});
+
+// скрипт для маска в инпуте типа телефон
+document.addEventListener("DOMContentLoaded", function () {
+    const input = document.querySelector("input[type='tel']");
+    const placeholder = input.getAttribute("placeholder").replace(/[^\d_+() -]/g, "");
+    const staticDigits = placeholder.replace(/[^\d]/g, "");
+
+    input.addEventListener("focus", function () {
+        if (!input.value) input.value = placeholder;
+    });
+
+    input.addEventListener("input", function (e) {
+        let rawInput = input.value.replace(/[^\d]/g, "");
+        let userInput = rawInput.replace(new RegExp("^" + staticDigits), "");
+        let formatted = "";
+        let numIndex = 0;
+
+        for (let i = 0; i < placeholder.length; i++) {
+            if (placeholder[i] === "_") {
+                formatted += numIndex < userInput.length ? userInput[numIndex] : "_";
+                if (numIndex < userInput.length) numIndex++;
+            } else {
+                formatted += placeholder[i];
+            }
+        }
+
+        input.value = formatted;
+
+        if (!userInput.length) input.value = "";
+    });
+
+    input.addEventListener("keydown", function (e) {
+        if (e.key === "Backspace" || e.key === "Delete") {
+            let cursorPos = input.selectionStart;
+            let value = input.value.split("");
+
+            while (cursorPos > 0) {
+                cursorPos--;
+                if (placeholder[cursorPos] === "_") {
+                    value[cursorPos] = "_";
+                    input.value = value.join("");
+                    input.setSelectionRange(cursorPos, cursorPos);
+                    e.preventDefault();
+                    break;
+                }
+            }
+        }
+    });
+
+    input.addEventListener("blur", function () {
+        let hasDigits = /\d/.test(input.value);
+        if (!hasDigits) input.value = "";
+    });
+});
+
+// сксрипт для шапки при скролле
+window.addEventListener("scroll", function () {
+    const header = document.querySelector(".header");
+
+    if (window.scrollY >= 98) {
+        header.classList.add("header-scroll");
+    } else {
+        header.classList.remove("header-scroll");
+    }
 });

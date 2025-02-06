@@ -88,6 +88,10 @@ body:has(.index-page) {
             background: #fff;
             color: #2a2d34;
             min-width: 238px;
+
+            &:hover {
+                border-color: #fff !important;
+            }
         }
 
         .form-check label:before {
