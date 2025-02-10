@@ -2286,11 +2286,13 @@ body:has(.index-page):has(.popup-menu.show) .header__wrapper, body:has(.index-pa
   align-items: center;
   justify-content: space-between;
   z-index: 999;
+  pointer-events: none;
 }
 .popups .popup-images .body__slider .slider-for .items-arrows .left-arrow,
 .popups .popup-images .body__slider .slider-for .items-arrows .right-arrow {
   cursor: pointer;
   padding: 100px 20px;
+  pointer-events: all;
 }
 .popups .popup-images .body__slider .slider-for .items-arrows .left-arrow svg,
 .popups .popup-images .body__slider .slider-for .items-arrows .right-arrow svg {

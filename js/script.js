@@ -363,7 +363,7 @@ document.addEventListener("DOMContentLoaded", () => {
         nextArrow: $("#popup-images-slide-next"),
         fade: true,
         asNavFor: ".popup-images .slider-nav",
-        draggable: false,
+        draggable: true,
     });
 
     $(".popup-images .slider-nav").slick({
