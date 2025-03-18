@@ -470,7 +470,7 @@
             }
 
             p {
-                font-size: 13px;
+                font-size: 15px;
                 margin-bottom: 15px;
 
                 &:last-of-type {
@@ -502,7 +502,7 @@
                     .col {
                         width: calc(50% - 10px);
                         color: #2a2d34;
-                        font-size: 13px;
+                        font-size: 15px;
 
                         @include sm-tablet {
                             width: 100%;

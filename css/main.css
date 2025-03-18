@@ -216,7 +216,7 @@ a {
 }
 .inner-page .big-banner .banner__cards .card__wrap .wrap-list ul li {
   list-style: none;
-  font-size: 13px;
+  font-size: 15px;
   transition: all 0.24s ease-in-out;
   position: relative;
 }
@@ -407,8 +407,8 @@ a {
   justify-content: center;
 }
 .info-items .item .text {
-  font-size: 13px;
-  line-height: 13px;
+  font-size: 15px;
+  line-height: 15px;
   white-space: nowrap;
 }
 .info-items .item.wide {
@@ -622,7 +622,7 @@ a {
 }
 .premises-cards .cards__pagination p {
   color: #8d8d8d;
-  font-size: 13px;
+  font-size: 15px;
   cursor: pointer;
   position: relative;
   transition: all 0.24s ease-in-out;
@@ -738,7 +738,7 @@ a {
 }
 
 .other-objects .objects__wrapper .container .more {
-  font-size: 13px;
+  font-size: 15px;
   position: absolute;
   bottom: 0;
   right: 30px;
@@ -979,7 +979,7 @@ a {
   min-width: calc(53% - 21px);
 }
 .about-block .block-col.right p {
-  font-size: 13px;
+  font-size: 15px;
   margin-bottom: 30px;
 }
 .about-block .block-col.right p.larger {
@@ -993,7 +993,7 @@ a {
 }
 .about-block .block-col.right ul li {
   list-style: none;
-  font-size: 13px;
+  font-size: 15px;
   padding-left: 33px;
   position: relative;
 }
@@ -1034,7 +1034,7 @@ a {
 }
 .about-block .sm-tag {
   color: #929292;
-  font-size: 13px;
+  font-size: 15px;
   margin-bottom: 30px;
 }
 .about-block.managment-block .block-col.left {
@@ -1050,7 +1050,7 @@ a {
   overflow: hidden;
 }
 .text-wrap p {
-  font-size: 13px;
+  font-size: 15px;
 }
 .text-wrap a {
   text-decoration: underline;
@@ -1158,7 +1158,7 @@ a {
 }
 .contacts-info .info__col .sm-tag {
   color: #8b8e8c;
-  font-size: 13px;
+  font-size: 15px;
 }
 .contacts-info .info__col .items-wrap {
   display: flex;
@@ -1189,7 +1189,7 @@ a {
   }
 }
 .press-text p {
-  font-size: 13px;
+  font-size: 15px;
   margin-bottom: 67px;
 }
 .press-text .h2 {
@@ -2107,7 +2107,7 @@ body:has(.index-page):has(.popup-menu.show) .header__wrapper, body:has(.index-pa
   margin-top: 0;
 }
 .popups .popup-object-card .body__info p {
-  font-size: 13px;
+  font-size: 15px;
   margin-bottom: 15px;
 }
 .popups .popup-object-card .body__info p:last-of-type {
@@ -2139,7 +2139,7 @@ body:has(.index-page):has(.popup-menu.show) .header__wrapper, body:has(.index-pa
 .popups .popup-object-card .body__info .info-table .row .col {
   width: calc(50% - 10px);
   color: #2a2d34;
-  font-size: 13px;
+  font-size: 15px;
 }
 @media (max-width: 650px) {
   .popups .popup-object-card .body__info .info-table .row .col {
@@ -2977,7 +2977,7 @@ html:has(.inner-page):has(.popup-menu.show) .header__menu .line, html:has(.inner
 .breadcrumbs__item {
   color: #989f9b;
   position: relative;
-  font-size: 13px;
+  font-size: 15px;
   cursor: pointer;
 }
 .breadcrumbs__item:after {
