@@ -365,7 +365,6 @@ document.addEventListener("DOMContentLoaded", () => {
         asNavFor: ".popup-images .slider-nav",
         draggable: true,
     });
-
     $(".popup-images .slider-nav").slick({
         slidesToScroll: 1,
         slidesToShow: 1,
