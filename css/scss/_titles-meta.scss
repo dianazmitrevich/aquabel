@@ -8,10 +8,12 @@ h5 {
     font-weight: 500;
 }
 
-.h2 {
+h2 {
     font-size: 32px;
     text-transform: uppercase;
     font-weight: 400;
+    margin-bottom: 30px;
+    margin-top: 30px;
 
     @include sm-tablet {
         font-size: 28px;
@@ -19,19 +21,35 @@ h5 {
 
     &.smaller {
         font-size: 22px;
+        margin-bottom: 20px;
     }
 }
 
-.h3 {
+h3 {
     font-size: 20px;
     text-transform: uppercase;
     font-weight: 400;
+    margin-bottom: 20px;
+    margin-top: 30px;
 }
 
-.h4 {
+h4 {
     font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: 30px;
 }
 
-.h5 {
+h5 {
     font-size: 15px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+article {
+    margin-bottom: 70px;
+    margin-top: 70px;
+
+    &:first-of-type {
+        margin-top: 0;
+    }
 }

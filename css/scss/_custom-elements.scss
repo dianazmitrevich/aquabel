@@ -214,6 +214,11 @@
 
 .d-accordion {
     transition: $transition;
+    margin-bottom: 20px;
+
+    &:first-of-type {
+        margin-top: 30px;
+    }
 
     &.active {
         .arrow {

@@ -1051,6 +1051,13 @@ a {
 }
 .text-wrap p {
   font-size: 15px;
+  margin-bottom: 15px;
+  display: block;
+}
+.text-wrap img {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: block;
 }
 .text-wrap a {
   text-decoration: underline;
@@ -1073,6 +1080,7 @@ a {
   list-style: none;
   counter-reset: li;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 .text-wrap ol li {
   font-size: 15px;
@@ -1133,11 +1141,6 @@ a {
   width: 100%;
   height: auto;
   border-radius: 5px;
-}
-.text-wrap .p-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
 }
 
 .contacts-info .info__wrapper {
@@ -2754,6 +2757,10 @@ body:has(.footer-cta) .d-main {
 
 .d-accordion {
   transition: all 0.24s ease-in-out;
+  margin-bottom: 20px;
+}
+.d-accordion:first-of-type {
+  margin-top: 30px;
 }
 .d-accordion.active .arrow {
   transform: rotate(180deg);
@@ -3058,32 +3065,49 @@ h5 {
   font-weight: 500;
 }
 
-.h2 {
+h2 {
   font-size: 32px;
   text-transform: uppercase;
   font-weight: 400;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 @media (max-width: 650px) {
-  .h2 {
+  h2 {
     font-size: 28px;
   }
 }
-.h2.smaller {
+h2.smaller {
   font-size: 22px;
+  margin-bottom: 20px;
 }
 
-.h3 {
+h3 {
   font-size: 20px;
   text-transform: uppercase;
   font-weight: 400;
+  margin-bottom: 20px;
+  margin-top: 30px;
 }
 
-.h4 {
+h4 {
   font-size: 20px;
+  margin-bottom: 20px;
+  margin-top: 30px;
 }
 
-.h5 {
+h5 {
   font-size: 15px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+article {
+  margin-bottom: 70px;
+  margin-top: 70px;
+}
+article:first-of-type {
+  margin-top: 0;
 }
 
 .main-btn {
