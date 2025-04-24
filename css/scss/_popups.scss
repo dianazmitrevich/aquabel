@@ -157,6 +157,10 @@
                 display: flex;
             }
 
+            .item {
+                margin-bottom: 0;
+            }
+
             .accordion-head {
                 width: fit-content;
 
@@ -580,6 +584,7 @@
 
         .body__title {
             text-align: center;
+            margin-top: 0;
 
             @include sm-tablet {
                 text-align: left;

@@ -11,6 +11,7 @@
 .breadcrumbs__title {
     font-size: 50px;
     text-transform: uppercase;
+    margin: 0;
 
     @include desktop {
         font-size: 34px;

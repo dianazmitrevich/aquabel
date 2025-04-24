@@ -350,6 +350,7 @@ a {
 }
 .object-info .info__title {
   margin-bottom: 21px;
+  margin-top: 0;
 }
 .object-info .info__text {
   font-size: 15px;
@@ -898,6 +899,7 @@ a {
 }
 .feedback-form .form__title {
   margin-bottom: 12px;
+  margin-top: 0;
 }
 .feedback-form .form__subtitle {
   font-size: 16px;
@@ -1843,6 +1845,9 @@ body:has(.index-page):has(.popup-menu.show) .header__wrapper, body:has(.index-pa
 .popups .popup-menu .menu__items.active {
   display: flex;
 }
+.popups .popup-menu .menu__items .item {
+  margin-bottom: 0;
+}
 .popups .popup-menu .menu__items .accordion-head {
   width: -moz-fit-content;
   width: fit-content;
@@ -2210,6 +2215,7 @@ body:has(.index-page):has(.popup-menu.show) .header__wrapper, body:has(.index-pa
 }
 .popups .popup-request .body__title {
   text-align: center;
+  margin-top: 0;
 }
 @media (max-width: 650px) {
   .popups .popup-request .body__title {
@@ -2523,6 +2529,9 @@ body:has(.index-page) .footer {
   .footer .footer-cta .cta__wrapper .wrap {
     padding: 40px 30px;
   }
+}
+.footer .footer-cta .cta__title {
+  margin: 0;
 }
 .footer .footer-cta .cta__subtitle {
   margin-top: 12px;
@@ -2961,6 +2970,7 @@ html:has(.inner-page):has(.popup-menu.show) .header__menu .line, html:has(.inner
 .breadcrumbs__title {
   font-size: 50px;
   text-transform: uppercase;
+  margin: 0;
 }
 @media (max-width: 1020px) {
   .breadcrumbs__title {
@@ -3212,6 +3222,14 @@ article:first-of-type {
 
 .mb-2 {
   margin-bottom: 20px;
+}
+
+.mt-0 {
+  margin-top: 0 !important;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
 }
 
 .page404__wrapper {
