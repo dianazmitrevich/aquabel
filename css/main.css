@@ -76,6 +76,12 @@ a {
     padding: 0 15px;
   }
 }
+.print-hide .screen-print,
+.print-hide .screen-arrows,
+.print-hide .info-request {
+  display: none !important;
+}
+
 .big-banner {
   overflow: hidden;
 }

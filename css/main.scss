@@ -135,6 +135,14 @@ a {
     }
 }
 
+.print-hide {
+    .screen-print,
+    .screen-arrows,
+    .info-request {
+        display: none !important;
+    }
+}
+
 @import "scss/index/big-banner";
 @import "scss/object-card/object-info";
 @import "scss/object-card/premises-cards";

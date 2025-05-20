@@ -492,3 +492,47 @@ window.addEventListener("scroll", function () {
         header.classList.remove("header-scroll");
     }
 });
+
+// скрипт для печати попапа карточки
+function printPopupAsImage(popupSelector) {
+    const popupBody = document.querySelector(`${popupSelector} .body`);
+    if (!popupBody) {
+        console.error("Не найден элемент для скриншота");
+        return;
+    }
+
+    popupBody.classList.add("print-hide");
+
+    html2canvas(popupBody).then(function (canvas) {
+        var imgData = canvas.toDataURL("image/png");
+
+        popupBody.classList.remove("print-hide");
+
+        let printWindow = window.open("", "_blank");
+        printWindow.document.write(`
+            <html>
+            <head>
+                <title>PDF Export</title>
+                <style>
+                    @media print {
+                        body {
+                            margin: 0;
+                            padding: 0;
+                        }
+                        img {
+                            width: 100%;
+                            display: block;
+                            page-break-before: avoid;
+                        }
+                    }
+                </style>
+            </head>
+            <body onload="window.print(); window.close();">
+                <img src="${imgData}" style="width:100%;" crossorigin="anonymous">
+            </body>
+            </html>
+        `);
+
+        printWindow.document.close();
+    });
+}
